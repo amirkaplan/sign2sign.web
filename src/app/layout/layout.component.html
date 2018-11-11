@@ -1,0 +1,10 @@
+{{layout.id}}
+    {{layout.name}}
+    
+<div class="layout">
+
+    <div *ngFor="let window of layout.windows">
+      <app-window [window]="window"></app-window>
+    </div>
+
+  </div>
