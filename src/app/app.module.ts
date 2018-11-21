@@ -6,19 +6,25 @@ import { LayoutComponent } from './layout/layout.component';
 import { WindowsComponent } from './windows/windows.component';
 import { LayoutsComponent } from './layouts/layouts.component';
 import { WindowComponent } from './window/window.component';
-import { HttpClientModule } from '@angular/common/http';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutsComponent,
     LayoutComponent,
     WindowsComponent,
-    LayoutsComponent,
     WindowComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

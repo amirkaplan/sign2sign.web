@@ -1,8 +1,8 @@
 export class Window {
-    constructor(private id: number,
-                private width: number,
-                private height: number,
-                private top: number,
-                private left: number,
-                private zindex: number) { }
+    constructor(public id: string,
+                public width: string,
+                public height: string,
+                public top: string,
+                public left: string,
+                public zindex: string) { }
 }

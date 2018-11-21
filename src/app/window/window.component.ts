@@ -15,8 +15,4 @@ export class WindowComponent implements OnInit {
   ngOnInit() {
   }
 
-  addPercent(number: string) {
-    return `${number}%`;
-  }
-
 }
