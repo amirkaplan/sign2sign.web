@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutsService } from './layouts.service';
 import { Layout } from '../Models/layout';
-import { Window } from '../Models/window';
-import { WindowsService } from '../windows/windows.service';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { PlayersService } from '../players/players.service';
 
 @Component({
   selector: 'app-layouts',
@@ -11,33 +12,28 @@ import { WindowsService } from '../windows/windows.service';
 })
 export class LayoutsComponent implements OnInit {
 
-  public layouts: Layout[];
+  player_id: string;
 
-  constructor(private layoutsService: LayoutsService,
-              private windowsService: WindowsService) { }
+  layoutsRef: AngularFirestoreCollection<Layout>;
+  layouts: Observable<Layout[]>;
+
+  constructor(private playersService: PlayersService,
+              private db: AngularFirestore,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    this.player_id = this.route.snapshot.params['player_id'];
     this.getLayouts();
   }
 
   getLayouts() {
-    this.layoutsService.getLayouts().subscribe(
-      (layouts: any) => {
-        this.layouts = layouts.docs.map(l => {
-          const layout: Layout = l.data();
-          layout.id = l.id;
-          this.windowsService.getWindows(layout.id).subscribe(
-            (windows: any) => {
-              layout.windows = windows.docs.map(w => {
-                const window: Window = w.data();
-                window.id = w.id;
-                return window;
-              });
-            });
-          return layout;
-        });
-      console.log(this.layouts);
+    this.layoutsRef = this.db.collection('layouts');
+    this.layouts = this.layoutsRef.valueChanges();
+  }
 
-      });
+  selectLayout(layout) {
+    this.playersService.changeSelectedPlayerLayout(layout);
+    this.router.navigate([`/players`]);
   }
 }

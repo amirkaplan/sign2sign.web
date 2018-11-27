@@ -12,4 +12,8 @@ export class LayoutsService {
   getLayouts() {
     return this.db.collection('layouts').get();
   }
+
+  getLayout(layout_id) {
+    return this.db.collection(`layouts`).doc(layout_id).snapshotChanges();
+  }
 }

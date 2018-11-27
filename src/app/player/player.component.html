@@ -1,0 +1,7 @@
+<div class="player">
+  <app-layout [layout]="player.layout"></app-layout>
+</div>
+<button (click)="changeLayout(player)">החלפת תבנית</button>
+<button (click)="changePlaylist(player.id)">עריכת מדיה</button>
+<button (click)="play(player.id)">ניגון</button>
+<button (click)="deletePlayer(player.id)">מחיקה</button>

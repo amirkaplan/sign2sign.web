@@ -1,8 +1,5 @@
 <ul>
-  <li *ngFor="let layout of layouts">
-    
-    <app-layout [layout]="layout"></app-layout>
-    
-
+  <li *ngFor="let layout of layouts | async">
+    <app-layout [layout]="layout" (click)="selectLayout(layout)"></app-layout>
   </li>
 </ul>

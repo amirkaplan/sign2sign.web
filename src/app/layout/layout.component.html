@@ -1,10 +1,5 @@
-{{layout.id}}
-    {{layout.name}}
-    
 <div class="layout">
-
-    <div *ngFor="let window of layout.windows">
+    <div *ngFor="let window of layout.windows | keys">
       <app-window [window]="window"></app-window>
     </div>
-
   </div>
