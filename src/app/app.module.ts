@@ -26,6 +26,8 @@ import { PlayComponent } from './play/play.component';
 import { AddLayoutComponent } from './add-layout/add-layout.component';
 
 import {FormsModule} from '@angular/forms';
+import { AddMediaComponent } from './add-media/add-media.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 
 @NgModule({
@@ -47,11 +49,13 @@ import {FormsModule} from '@angular/forms';
     PageNotFoundComponent,
     PlayComponent,
     AddLayoutComponent,
+    AddMediaComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
+    AngularFireStorageModule,
     AppRoutingModule,
     FormsModule
   ],
