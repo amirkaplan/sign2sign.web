@@ -1,3 +1,11 @@
-<p>
-  media works!
-</p>
+<ul>
+  <li *ngFor="let medium of mediaService.media | async">
+    <app-medium [medium]="medium"></app-medium>
+  </li>
+</ul>
+<h3>selected</h3>
+<ul>
+    <li *ngFor="let medium of mediaService.selectedMedia">
+      <app-medium [medium]="medium"></app-medium>
+    </li>
+  </ul>

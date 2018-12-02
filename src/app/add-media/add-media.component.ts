@@ -29,14 +29,20 @@ export class AddMediaComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       const file = files.item(i);
       const uuid = UUID.UUID();
-      this.ref = this.storage.ref(`/images/${uuid}`);
-      this.task = this.ref.put(file);
-      // const downloadURL = this.storage.ref(`/images/${uuid}`).getDownloadURL().subscribe(
+      // this.ref = this.storage.ref(`/media/${uuid}`);
+      // this.task = this.ref.put(file);
+
+      this.db.collection('media').doc(uuid).set({
+        id: uuid,
+        path: `/media/${uuid}`
+      });
+
+      // const downloadURL = this.storage.ref(`/media/${uuid}`).getDownloadURL().subscribe(
       //   url => console.log(url)
-      //   // url => this.db.collection('upload').doc(uuid).set({
+      //   // url => this.db.collection('media').doc(uuid).set({
       //   //   id: uuid,
       //   //   url: url,
-      //   //   path: `/images/${uuid}`
+      //   //   path: `/media/${uuid}`
       //   // })
       // );
     }

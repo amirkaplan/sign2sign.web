@@ -1,3 +1,5 @@
-<p>
-  playlist works!
-</p>
+<div class="playlist">
+    <app-media [media]="playlist.media"></app-media>
+  </div>
+  <button (click)="addMedia(playlist)">הוספת מדיה</button>
+  <button (click)="deletePlaylist(playlist.id)">מחיקה</button>

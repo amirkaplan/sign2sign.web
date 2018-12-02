@@ -18,10 +18,6 @@ export class PlayersComponent implements OnInit {
   constructor(public playersService: PlayersService) { }
 
   ngOnInit() {
-    this.getPlayers();
-  }
-
-  getPlayers() {
     this.playersService.getPlayers();
   }
 

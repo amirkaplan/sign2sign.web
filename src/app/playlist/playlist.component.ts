@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PlaylistsService } from '../playlists/plylists.service';
+import { Playlist } from '../Models/plylist';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playlist',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistComponent implements OnInit {
 
-  constructor() { }
+  @Input() playlist: Playlist;
+
+  constructor(public playlistsService: PlaylistsService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  addMedia(playlist: Playlist) {
+    this.playlistsService.selectPlaylist(playlist);
+    this.router.navigate([`/media/${playlist.id}`]);
+  }
+
+  deletePlaylist(id) {
+    this.playlistsService.deletePlaylist(id);
   }
 
 }

@@ -28,6 +28,7 @@ import { AddLayoutComponent } from './add-layout/add-layout.component';
 import {FormsModule} from '@angular/forms';
 import { AddMediaComponent } from './add-media/add-media.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { PlaylistMediaComponent } from './playlist-media/playlist-media.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     PlayComponent,
     AddLayoutComponent,
     AddMediaComponent,
-  ],
+    PlaylistMediaComponent
+    ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),

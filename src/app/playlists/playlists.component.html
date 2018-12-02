@@ -1,3 +1,7 @@
-<p>
-  playlists works!
-</p>
+<button (click)="addPlaylist()">הוספת פלייליסט</button>
+
+<ul>
+  <li *ngFor="let playlist of playlistsService.playlists | async">
+    <app-playlist [playlist]="playlist"></app-playlist>
+  </li>
+</ul>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Medium } from '../Models/medium';
+import { MediaService } from '../media/media.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-medium',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediumComponent implements OnInit {
 
-  constructor() { }
+  @Input() medium: Medium;
+
+  constructor(public mediaService: MediaService,
+              private storage: AngularFireStorage) { }
 
   ngOnInit() {
+    // this.storage.ref(this.medium.path).getDownloadURL().subscribe(
+    //   url => this.medium.url = url
+    // );
+  }
+
+  selectMedium(medium: Medium) {
+    this.mediaService.selectMedium(medium);
   }
 
 }

@@ -2,15 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PlayersComponent } from './players/players.component';
 import { LayoutsComponent } from './layouts/layouts.component';
-import { MediumComponent } from './medium/medium.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlayComponent } from './play/play.component';
+import { PlaylistsComponent } from './playlists/playlists.component';
+import { MediaComponent } from './media/media.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
   { path: 'layouts/:player_id', component: LayoutsComponent },
-  { path: 'medium/:player_id', component: MediumComponent },
+  { path: 'media/:player_id', component: MediaComponent },
   { path: 'play/:player_id', component: PlayComponent },
+  { path: 'playlists', component: PlaylistsComponent },
   { path: '',   redirectTo: '/players', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
