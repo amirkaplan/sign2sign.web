@@ -1,3 +1,5 @@
-<p>
-  playlist-media works!
-</p>
+<ul>
+  <li *ngFor="let medium of media">
+    <app-medium [medium]="medium"></app-medium>
+  </li>
+</ul>

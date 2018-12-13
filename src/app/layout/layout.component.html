@@ -1,7 +1,5 @@
-<div class="layout">
+<div [class.layout]="!playMode" [class.play-mode-layout]="playMode">
     <div *ngFor="let window of layout.windows | keys">
-      <app-window [window]="window">
-        <button *ngIf="showPlaylistButton" (click)="changePlaylist(window)">החלפת פלייליסט</button>
-      </app-window>
+      <app-window [window]="window" [player]="player" [playMode]="playMode"></app-window>
     </div>
   </div>

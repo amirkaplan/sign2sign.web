@@ -1,7 +1,6 @@
-<button (click)="addPlaylist()">הוספת פלייליסט</button>
-
+<button (click)="add()">הוספת פלייליסט</button>
 <ul>
   <li *ngFor="let playlist of playlistsService.playlists | async">
-    <app-playlist [playlist]="playlist"></app-playlist>
+    <app-playlist [playlist]="playlist" (click)="select(playlist)"></app-playlist>
   </li>
 </ul>

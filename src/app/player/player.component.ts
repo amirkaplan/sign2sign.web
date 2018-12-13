@@ -12,6 +12,7 @@ import { PlayersService } from '../players/players.service';
 export class PlayerComponent implements OnInit {
 
 @Input() player: Player;
+@Input() playMode = false;
 
   constructor(public playersService: PlayersService,
               private router: Router) { }
@@ -24,15 +25,12 @@ export class PlayerComponent implements OnInit {
   }
 
   changeLayout(player: Player) {
-    this.playersService.selectPlayer(player);
-    this.router.navigate([`/layouts/${player.id}`]);
+    this.playersService.select(player);
+    this.router.navigate([`/layouts`]);
   }
 
-  changePlaylist(id) {
-
-  }
-
-  play(id) {
-
+  play(player: Player) {
+    this.playersService.select(player);
+    this.router.navigate([`/play`]);
   }
 }

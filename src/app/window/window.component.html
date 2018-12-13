@@ -1,6 +1,12 @@
 <div class="window" [ngStyle]="{'top': window.top, 
                                 'left': window.left,
                                 'width': window.width,
-                                'height': window.height}">
-    <ng-content></ng-content>
+                                'height': window.height,
+                                'zindex': window.zindex}">
+    <button *ngIf="!playMode" (click)="changePlaylist(window)">החלפת פלייליסט</button>
+    <ul *ngIf="window.playlist">
+        <li *ngFor="let medium of window.playlist.media" [hidden]="medium !== showMedium">
+            {{ medium.id }}
+        </li>
+    </ul>
 </div>

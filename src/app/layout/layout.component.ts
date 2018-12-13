@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Layout } from '../Models/layout';
-import { Window } from '../Models/window';
+import { Player } from '../Models/player';
 
 
 @Component({
@@ -11,15 +11,12 @@ import { Window } from '../Models/window';
 export class LayoutComponent implements OnInit {
 
  @Input() layout: Layout;
- showPlaylistButton = true;
+ @Input() player: Player; 
+ @Input() playMode = false;
+
 
   constructor() { }
 
   ngOnInit() {
   }
-
-  changePlaylist(window: Window) {
-
-  }
-
 }

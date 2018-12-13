@@ -12,7 +12,7 @@ export class PlayersService {
 
   private playersRef: AngularFirestoreCollection<Player>;
   players: Observable<Player[]>;
-  selectedPlayer: Player;
+  selected: Player;
 
 
   constructor(private db: AngularFirestore) {}
@@ -22,8 +22,8 @@ export class PlayersService {
     this.players = this.playersRef.valueChanges();
   }
 
-  selectPlayer(player: Player) {
-    this.selectedPlayer = player;
+  select(player: Player) {
+    this.selected = player;
   }
 
   addPlayer() {
@@ -45,11 +45,11 @@ export class PlayersService {
 
   deletePlayer(id) {
     this.db.collection('players').doc(id).delete();
-    this.selectedPlayer.layout = null;
+    this.selected.layout = null;
   }
 
   changeSelectedPlayerLayout(layout: Layout) {
-    this.selectedPlayer.layout = layout;
-    this.db.collection('players').doc(this.selectedPlayer.id).set(this.selectedPlayer);
+    this.selected.layout = layout;
+    this.db.collection('players').doc(this.selected.id).set(this.selected);
   }
 }

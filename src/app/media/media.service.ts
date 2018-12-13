@@ -15,20 +15,20 @@ export class MediaService {
 
   constructor(private db: AngularFirestore) { }
 
-  getMedia() {
+  get() {
     this.mediaRef = this.db.collection('media');
     this.media = this.mediaRef.valueChanges();
   }
 
-  deleteMedia(id) {
+  delete(id) {
     this.db.collection('media').doc(id).delete();
   }
 
-  selectMedium(medium: Medium) {
+  select(medium: Medium) {
       this.selectedMedia.push(medium);
   }
 
-  deselectMedium(medium: Medium) {
+  deselect(medium: Medium) {
     const index = this.selectedMedia.indexOf(medium);
     if (index > -1) {
       this.selectedMedia.splice(index, 1);

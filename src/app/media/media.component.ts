@@ -4,6 +4,7 @@ import { Medium } from '../Models/medium';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { PlaylistsService } from '../playlists/plylists.service';
 
 @Component({
   selector: 'app-media',
@@ -17,12 +18,25 @@ export class MediaComponent implements OnInit {
   playlist_id: string;
 
   constructor(public mediaService: MediaService,
+    private playlistService: PlaylistsService,
     private db: AngularFirestore,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
    // this.playlist_id = this.route.snapshot.params['player_id'];
-      this.mediaService.getMedia();
+      this.mediaService.get();
+  }
+
+  select(medium: Medium) {
+    this.mediaService.select(medium);
+  }
+  
+  deselect(medium: Medium) {
+    this.mediaService.deselect(medium);
+  }
+
+  add() {
+    this.playlistService.addMedia2selectedPlaylist(this.mediaService.selectedMedia);
   }
 }

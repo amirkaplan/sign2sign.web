@@ -1,7 +1,7 @@
 <button (click)="addPlayer()">הוספת נגן חדש</button>
 
 <ul>
-  <li *ngFor="let player of playersService.players | async" (click)="selectPlayer(player)">
+  <li *ngFor="let player of playersService.players | async" (click)="select(player)">
     <app-player [player]="player"></app-player>
   </li>
 </ul>

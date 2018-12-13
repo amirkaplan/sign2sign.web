@@ -21,8 +21,6 @@ export class MediumComponent implements OnInit {
     // );
   }
 
-  selectMedium(medium: Medium) {
-    this.mediaService.selectMedium(medium);
-  }
+
 
 }

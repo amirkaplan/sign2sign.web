@@ -1,0 +1,6 @@
+.playlist{
+ min-height: 20px;
+}
+.selected {
+    border: 1px solid lightsteelblue; 
+}

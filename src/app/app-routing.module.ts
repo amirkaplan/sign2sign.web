@@ -9,10 +9,11 @@ import { MediaComponent } from './media/media.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
-  { path: 'layouts/:player_id', component: LayoutsComponent },
+  { path: 'layouts/', component: LayoutsComponent },
   { path: 'media/:player_id', component: MediaComponent },
-  { path: 'play/:player_id', component: PlayComponent },
+  { path: 'play', component: PlayComponent },
   { path: 'playlists', component: PlaylistsComponent },
+  { path: 'playlists/:window_id', component: PlaylistsComponent },
   { path: '',   redirectTo: '/players', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

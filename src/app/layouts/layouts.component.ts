@@ -4,6 +4,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PlayersService } from '../players/players.service';
+import { LayoutsService } from './layouts.service';
 
 @Component({
   selector: 'app-layouts',
@@ -12,27 +13,15 @@ import { PlayersService } from '../players/players.service';
 })
 export class LayoutsComponent implements OnInit {
 
-  player_id: string;
-
-  layoutsRef: AngularFirestoreCollection<Layout>;
-  layouts: Observable<Layout[]>;
-
   constructor(private playersService: PlayersService,
-              private db: AngularFirestore,
-              private route: ActivatedRoute,
+              public layoutsService: LayoutsService,
               private router: Router) { }
 
   ngOnInit() {
-    this.player_id = this.route.snapshot.params['player_id'];
-    this.getLayouts();
+    this.layoutsService.get();
   }
 
-  getLayouts() {
-    this.layoutsRef = this.db.collection('layouts');
-    this.layouts = this.layoutsRef.valueChanges();
-  }
-
-  selectLayout(layout) {
+  select(layout) {
     this.playersService.changeSelectedPlayerLayout(layout);
     this.router.navigate([`/players`]);
   }

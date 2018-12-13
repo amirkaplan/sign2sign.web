@@ -19,12 +19,11 @@ export class PlaylistComponent implements OnInit {
   }
 
   addMedia(playlist: Playlist) {
-    this.playlistsService.selectPlaylist(playlist);
+    this.playlistsService.select(playlist);
     this.router.navigate([`/media/${playlist.id}`]);
   }
 
-  deletePlaylist(id) {
-    this.playlistsService.deletePlaylist(id);
+  delete(id) {
+    this.playlistsService.delete(id);
   }
-
 }

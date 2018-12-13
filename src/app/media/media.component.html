@@ -1,11 +1,14 @@
 <ul>
   <li *ngFor="let medium of mediaService.media | async">
     <app-medium [medium]="medium"></app-medium>
+    <button (click)="select(medium)">הוספה</button>
   </li>
 </ul>
-<h3>selected</h3>
+<h2>selected</h2>
 <ul>
-    <li *ngFor="let medium of mediaService.selectedMedia">
-      <app-medium [medium]="medium"></app-medium>
-    </li>
-  </ul>
+  <li *ngFor="let medium of mediaService.selectedMedia">
+    <app-medium [medium]="medium"></app-medium>
+    <button (click)="deselect(medium)">הסרה</button>
+  </li>
+</ul>
+<button (click)="add()">הוספה</button>

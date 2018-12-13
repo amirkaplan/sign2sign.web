@@ -1,5 +1,5 @@
-<div class="playlist">
-    <app-media [media]="playlist.media"></app-media>
-  </div>
-  <button (click)="addMedia(playlist)">הוספת מדיה</button>
-  <button (click)="deletePlaylist(playlist.id)">מחיקה</button>
+<div class="playlist" [class.selected]="playlistsService.selected == playlist">
+  <app-playlist-media [media]="playlist.media"></app-playlist-media>
+</div>
+<button (click)="addMedia(playlist)">הוספת מדיה</button>
+<button (click)="delete(playlist.id)">מחיקה</button>
