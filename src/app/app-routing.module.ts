@@ -9,7 +9,7 @@ import { MediaComponent } from './media/media.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayersComponent },
-  { path: 'layouts/', component: LayoutsComponent },
+  { path: 'layouts', component: LayoutsComponent },
   { path: 'media/:player_id', component: MediaComponent },
   { path: 'play', component: PlayComponent },
   { path: 'playlists', component: PlaylistsComponent },
