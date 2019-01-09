@@ -29,6 +29,9 @@ import {FormsModule} from '@angular/forms';
 import { AddMediaComponent } from './add-media/add-media.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { PlaylistMediaComponent } from './playlist-media/playlist-media.component';
+import { UsersComponent } from './users/users.component';
+import { ScreensComponent } from './screens/screens.component';
+import { ScreenComponent } from './screen/screen.component';
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import { PlaylistMediaComponent } from './playlist-media/playlist-media.componen
     PlayComponent,
     AddLayoutComponent,
     AddMediaComponent,
-    PlaylistMediaComponent
+    PlaylistMediaComponent,
+    UsersComponent,
+    ScreensComponent,
+    ScreenComponent
     ],
   imports: [
     BrowserModule,

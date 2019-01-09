@@ -34,7 +34,7 @@ export class WindowComponent implements OnInit {
   }
 
   play() {
-    if (this.window.playlist.media.length > 0) {
+    if (this.window.playlist && this.window.playlist.media.length > 0) {
       let i = 0;
       setInterval(() => {
         this.showMedium = this.window.playlist.media[i];

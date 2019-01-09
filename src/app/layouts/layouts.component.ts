@@ -21,8 +21,8 @@ export class LayoutsComponent implements OnInit {
     this.layoutsService.get();
   }
 
-  select(layout) {
+  select(layout: Layout) {
     this.playersService.changeSelectedPlayerLayout(layout);
-    this.router.navigate([`/players`]);
+    this.router.navigate([`/screens`]);
   }
 }

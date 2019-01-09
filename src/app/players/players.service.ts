@@ -4,6 +4,7 @@ import { Player } from '../Models/player';
 import { Observable } from 'rxjs';
 import { UUID } from 'angular2-uuid';
 import { Layout } from '../Models/layout';
+import { ScreensService } from '../screens/screens.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,10 @@ export class PlayersService {
   players: Observable<Player[]>;
   selected: Player;
 
+  constructor(private db: AngularFirestore,
+              private screensService: ScreensService) {}
 
-  constructor(private db: AngularFirestore) {}
-
-  getPlayers() {
+  get() {
     this.playersRef = this.db.collection('players');
     this.players = this.playersRef.valueChanges();
   }
@@ -26,7 +27,7 @@ export class PlayersService {
     this.selected = player;
   }
 
-  addPlayer() {
+  add() {
     const id =  UUID.UUID();
     this.db.collection('players').doc(id).set({
       id: id,
@@ -43,7 +44,7 @@ export class PlayersService {
     });
   }
 
-  deletePlayer(id) {
+  delete(id) {
     this.db.collection('players').doc(id).delete();
     this.selected.layout = null;
   }
@@ -51,5 +52,6 @@ export class PlayersService {
   changeSelectedPlayerLayout(layout: Layout) {
     this.selected.layout = layout;
     this.db.collection('players').doc(this.selected.id).set(this.selected);
+    this.screensService.changeSelectedScreenPlayer(this.selected);
   }
 }

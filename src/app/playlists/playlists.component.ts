@@ -30,6 +30,6 @@ export class PlaylistsComponent implements OnInit {
 
   select(playlist: Playlist) {
     this.windowsService.changeSelectedWindowPlaylist(playlist);
-    this.router.navigate([`/players`]);
+    this.router.navigate([`/screens`]);
   }
 }

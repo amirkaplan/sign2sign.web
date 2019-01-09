@@ -1,0 +1,10 @@
+<div class="screen">
+  <app-player *ngIf="screen.player" [screen]="screen" [player]="screen.player" [playMode]="playMode"></app-player>
+</div>
+
+<div *ngIf="!playMode">
+  <button (click)="changePlayer(screen)">החלפת נגן</button>
+  <button (click)="play(screen)">ניגון</button>
+  <button (click)="delete(screen.id)">מחיקה</button>
+</div>
+

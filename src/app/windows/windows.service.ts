@@ -9,20 +9,20 @@ import { PlayersService } from '../players/players.service';
 })
 export class WindowsService {
 
-  selectedWindow: Window;
+  selected: Window;
 
   constructor(private playersService: PlayersService, 
               private db: AngularFirestore) {}
 
   select(window: Window) {
-    this.selectedWindow = window;
+    this.selected = window;
   }
 
   changeSelectedWindowPlaylist(playlist: Playlist) {
-    this.selectedWindow.playlist = playlist;
+    this.selected.playlist = playlist;
     const layout = this.playersService.selected.layout;
     for (let i in layout.windows) {
-      if (layout.windows[i] === this.selectedWindow) {
+      if (layout.windows[i] === this.selected) {
         layout.windows[i].playlist = playlist;
       }
     }

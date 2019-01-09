@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../Models/player';
+import { Screen } from '../Models/screen';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { PlayersService } from '../players/players.service';
@@ -12,6 +13,7 @@ import { PlayersService } from '../players/players.service';
 export class PlayerComponent implements OnInit {
 
 @Input() player: Player;
+@Input() screen: Screen;
 @Input() playMode = false;
 
   constructor(public playersService: PlayersService,
@@ -20,17 +22,12 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
   }
 
-  deletePlayer(id) {
-    this.playersService.deletePlayer(id);
-  }
-
   changeLayout(player: Player) {
     this.playersService.select(player);
     this.router.navigate([`/layouts`]);
   }
 
-  play(player: Player) {
-    this.playersService.select(player);
-    this.router.navigate([`/play`]);
+  delete(id) {
+    this.playersService.delete(id);
   }
 }

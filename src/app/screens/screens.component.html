@@ -1,0 +1,7 @@
+<button (click)="add()">הוספת מסך</button>
+
+<ul>
+  <li *ngFor="let screen of screensService.screens | async">
+    <app-screen [screen]="screen"></app-screen>
+  </li>
+</ul>

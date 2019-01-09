@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PlayersService } from '../players/players.service';
+import { ScreensService } from '../screens/screens.service';
 
 @Component({
   selector: 'app-play',
@@ -9,7 +8,7 @@ import { PlayersService } from '../players/players.service';
 })
 export class PlayComponent implements OnInit {
 
-  constructor(public playersService: PlayersService) { }
+  constructor(public screensService: ScreensService) { }
 
   ngOnInit() {}
 

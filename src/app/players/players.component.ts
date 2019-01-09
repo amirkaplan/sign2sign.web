@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../Models/player';
-import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { PlayersService } from './players.service';
+import { ScreensService } from '../screens/screens.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,17 +12,20 @@ import { PlayersService } from './players.service';
 })
 export class PlayersComponent implements OnInit {
 
-  constructor(public playersService: PlayersService) { }
+  constructor(public playersService: PlayersService,
+              private screensService: ScreensService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.playersService.getPlayers();
+    this.playersService.get();
+  }
+
+  add() {
+    this.playersService.add();
   }
 
   select(player: Player) {
-    this.playersService.select(player);
-  }
-
-  addPlayer() {
-    this.playersService.addPlayer();
+    this.screensService.changeSelectedScreenPlayer(player);
+    this.router.navigate([`/screens`]);
   }
 }
